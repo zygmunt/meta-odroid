@@ -8,7 +8,7 @@ LIC_FILES_CHKSUM = "file://Licenses/README;md5=a2c678cfd4a4d97135585cad908541c6"
 
 SRC_URI = "git://git.denx.de/u-boot.git;branch=master"
 
-S = "${UNPACKDIR}/git"
+S = "${WORKDIR}/git"
 
 PACKAGE_ARCH = "${MACHINE_ARCH}"
 
@@ -157,9 +157,9 @@ do_install () {
         fi
     fi
 
-    if [ -e ${UNPACKDIR}/fw_env.config ] ; then
+    if [ -e ${WORKDIR}/fw_env.config ] ; then
         install -d ${D}${sysconfdir}
-        install -m 644 ${UNPACKDIR}/fw_env.config ${D}${sysconfdir}/fw_env.config
+        install -m 644 ${WORKDIR}/fw_env.config ${D}${sysconfdir}/fw_env.config
     fi
 
     if [ -n "${SPL_BINARY}" ]
@@ -188,7 +188,7 @@ do_install () {
 
     if [ -n "${UBOOT_ENV}" ]
     then
-        install ${UNPACKDIR}/${UBOOT_ENV_BINARY} ${D}/boot/${UBOOT_ENV_IMAGE}
+        install ${WORKDIR}/${UBOOT_ENV_BINARY} ${D}/boot/${UBOOT_ENV_IMAGE}
         ln -sf ${UBOOT_ENV_IMAGE} ${D}/boot/${UBOOT_ENV_BINARY}
     fi
 }
@@ -285,7 +285,7 @@ do_deploy () {
 
     if [ -n "${UBOOT_ENV}" ]
     then
-        install ${UNPACKDIR}/${UBOOT_ENV_BINARY} ${DEPLOYDIR}/${UBOOT_ENV_IMAGE}
+        install ${WORKDIR}/${UBOOT_ENV_BINARY} ${DEPLOYDIR}/${UBOOT_ENV_IMAGE}
         rm -f ${DEPLOYDIR}/${UBOOT_ENV_BINARY} ${DEPLOYDIR}/${UBOOT_ENV_SYMLINK}
         ln -sf ${UBOOT_ENV_IMAGE} ${DEPLOYDIR}/${UBOOT_ENV_BINARY}
         ln -sf ${UBOOT_ENV_IMAGE} ${DEPLOYDIR}/${UBOOT_ENV_SYMLINK}

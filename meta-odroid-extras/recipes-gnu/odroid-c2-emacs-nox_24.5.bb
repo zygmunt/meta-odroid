@@ -23,5 +23,5 @@ do_install() {
     # The files fetched via SRC_URI (above) will be in ${WORKDIR}.
     #
     #tar zxvf ${WORKDIR}/odroid-c2-emacs  ${D}${prefix}/
-    cp -r ${UNPACKDIR}/local ${D}${prefix}/
+    cp -r ${WORKDIR}/local ${D}${prefix}/
 }

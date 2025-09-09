@@ -59,7 +59,7 @@ UBOOT_SUFFIX ?= "bin"
 
 PACKAGE_ARCH = "${MACHINE_ARCH}"
 
-S = "${UNPACKDIR}/git"
+S = "${WORKDIR}/git"
 B = "${S}"
 
 inherit uboot-boot-scr
@@ -81,11 +81,11 @@ do_configure () {
 }
 
 do_configure:append() {
-	if [ -e ${UNPACKDIR}/boot.ini ]; then
-		cp ${UNPACKDIR}/boot.ini ${B}/
+	if [ -e ${WORKDIR}/boot.ini ]; then
+		cp ${WORKDIR}/boot.ini ${B}/
 	fi
-	if [ -e ${UNPACKDIR}/config.ini ]; then
-		cp ${UNPACKDIR}/config.ini ${B}/
+	if [ -e ${WORKDIR}/config.ini ]; then
+		cp ${WORKDIR}/config.ini ${B}/
 	fi
 }
 

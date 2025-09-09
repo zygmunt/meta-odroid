@@ -25,9 +25,9 @@ do_install() {
     #
     # Install files in to the image
     #
-    # The files fetched via SRC_URI (above) will be in ${UNPACKDIR}.
+    # The files fetched via SRC_URI (above) will be in ${WORKDIR}.
     #
-    install -m 0755 ${UNPACKDIR}/odroid-c2-init  ${D}${sysconfdir}/init.d/
+    install -m 0755 ${WORKDIR}/odroid-c2-init  ${D}${sysconfdir}/init.d/
 
     #
     # Symbolic links can also be installed. e.g.

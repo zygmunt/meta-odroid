@@ -19,7 +19,7 @@ FSTYPE = "ext4"
 CLEANBROKEN = "1"
 
 do_configure () {
-    cat ${UNPACKDIR}/emmc.tmp > ${B}/emmc.sh
+    cat ${WORKDIR}/emmc.tmp > ${B}/emmc.sh
     echo "dd if=/emmc/bl1.bin.hardkernel of=${EMMC_DEVICE} conv=notrunc bs=512 seek=0" >> ${B}/emmc.sh
     echo "dd if=/emmc/bl2.bin.hardkernel of=${EMMC_DEVICE} conv=notrunc bs=512 seek=30" >> ${B}/emmc.sh
     echo "dd if=/emmc/u-boot-dtb.bin of=${EMMC_DEVICE} conv=notrunc bs=512 seek=62" >> ${B}/emmc.sh
